@@ -2,7 +2,7 @@ import axios, { AxiosPromise } from "axios";
 import { PessoaData } from "../model/PessoaData";
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-const API_URL = import.meta.env.BASE_URL
+const API_URL = import.meta.env.VITE_API_URL
 
 const postData = async (data: PessoaData): AxiosPromise<any> => {
   const response = axios.post(API_URL + '/v1/api/pessoas', data);
