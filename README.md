@@ -49,3 +49,5 @@ chmod +x start.sh
 ## Ambiente
 
 Os projetos foram publicados no [Render](https://render.com) e o sistema pode ser acessado [nesse link](https://cadastro-pessoas-app.onrender.com/).
+
+**PS.. O backend ainda não subiu, a plataforma está com problemas de permissão pra acessar o .jar gerado pelo docker.
