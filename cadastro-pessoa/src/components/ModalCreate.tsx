@@ -117,30 +117,20 @@ export function CreateModal() {
                 <TabPanel>
                   <FormControl id="nome-contato" isRequired>
                     <FormLabel>Nome Contato</FormLabel>
-                    <Input
-                      placeholder="Ex: José da Silva"
-                      value={nome}
-                      onChange={(e) => setNome(e.currentTarget.value)}
-                    />
+                    <Input placeholder="Ex: José da Silva" />
                   </FormControl>
 
                   <FormControl id="email-contato" isRequired>
                     <FormLabel>Email</FormLabel>
                     <Input
                       placeholder="Ex: josesilva@yahoo.com.br"
-                      value={nome}
-                      onChange={(e) => setNome(e.currentTarget.value)}
                       type="email"
                     />
                   </FormControl>
 
                   <FormControl id="telefone-contato" isRequired>
                     <FormLabel>Telefone</FormLabel>
-                    <Input
-                      placeholder="Ex: (44) 998888-4444"
-                      value={nome}
-                      onChange={(e) => setNome(e.currentTarget.value)}
-                    />
+                    <Input placeholder="Ex: (44) 998888-4444" />
                   </FormControl>
                 </TabPanel>
               </TabPanels>
