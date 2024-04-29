@@ -16,12 +16,15 @@ services:
       - "8080:8080"
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/bdmeuapp
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 123456
     depends_on:
       - postgres-db
 
   spa-app:
     build:
       context: ./cadastro-pessoa
+      dockerfile: Dockerfile
     ports:
       - "5173:5173"
     depends_on:
