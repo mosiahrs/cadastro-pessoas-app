@@ -2,7 +2,7 @@ import axios from "axios"
 import { useQuery } from '@tanstack/react-query';
 import { ObjetoPaginado } from "../model/ObjetoPaginado";
 
-const API_URL = 'http://localhost:8080'
+const API_URL = import.meta.env.BASE_URL
 
 const urlParams = new URLSearchParams();
 

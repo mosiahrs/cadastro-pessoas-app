@@ -15,7 +15,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/v1/api/pessoas")
@@ -26,7 +25,8 @@ public class PessoaController {
     private final PessoaMapper mapperPessoa;
     private final ContatoMapper mapperContato;
 
-    public PessoaController(PessoaService pessoaService, ContatoService contatoService, PessoaMapper mapper, ContatoMapper mapperContato) {
+    public PessoaController(PessoaService pessoaService, ContatoService contatoService, PessoaMapper mapper,
+            ContatoMapper mapperContato) {
         this.pessoaService = pessoaService;
         this.contatoService = contatoService;
         this.mapperPessoa = mapper;
@@ -35,7 +35,7 @@ public class PessoaController {
 
     @GetMapping("/{pessoaId}")
     ResponseEntity<PessoaResponse> obterUmaPessoa(@PathVariable("pessoaId") Long pessoaId) {
-        var pessoa =  pessoaService.obterUmaUnicaPessoa(pessoaId);
+        var pessoa = pessoaService.obterUmaUnicaPessoa(pessoaId);
         if (pessoa == null) {
             return ResponseEntity.notFound().build();
         }
@@ -44,20 +44,21 @@ public class PessoaController {
 
     @GetMapping
     ResponseEntity<PessoaPaginadoResponse> obterVariasPessoasPaginado(@RequestParam(defaultValue = "0") int page,
-                                                                      @RequestParam(defaultValue = "5") int size) {
+            @RequestParam(defaultValue = "5") int size) {
         return new ResponseEntity<>(
                 mapperPessoa.pageToResponse(
-                    pessoaService.obterVariasPessoasPaginado(PageRequest.of(page, size, Sort.by("id")))),
-                    HttpStatus.OK);
+                        pessoaService.obterVariasPessoasPaginado(PageRequest.of(page, size, Sort.by("id")))),
+                HttpStatus.OK);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     void cadastrarPessoa(@RequestBody @Validated @Valid PessoaCadastroRequest cadastroRequest) {
         var novaPessoa = pessoaService.cadastrar(mapperPessoa.cadastroRequestToEntity(cadastroRequest));
-        var listaContato =
-                cadastroRequest.listaContatos().stream()
-                .map(contatoDTO -> {return mapperContato.contatoDTOToEntity(contatoDTO, novaPessoa);})
+        var listaContato = cadastroRequest.listaContatos().stream()
+                .map(contatoDTO -> {
+                    return mapperContato.contatoDTOToEntity(contatoDTO, novaPessoa);
+                })
                 .toList();
 
         contatoService.salvarLista(listaContato);
@@ -71,8 +72,8 @@ public class PessoaController {
     }
 
     @DeleteMapping("/{pessoaId}")
-    void deletarPessoa(@PathVariable("pessoaId") Long pessoaId) {   
-        if(pessoaService.obterUmaUnicaPessoa(pessoaId) != null) {
+    void deletarPessoa(@PathVariable("pessoaId") Long pessoaId) {
+        if (pessoaService.obterUmaUnicaPessoa(pessoaId) != null) {
             pessoaService.deletar(pessoaId);
         }
     }

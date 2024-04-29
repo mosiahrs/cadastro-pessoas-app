@@ -1,7 +1,7 @@
 import axios, { AxiosPromise } from "axios";
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-const API_URL = 'http://localhost:8080'
+const API_URL = import.meta.env.BASE_URL
 
 const deleteData = async (id: number): AxiosPromise<any> => {
   const response = axios.delete(API_URL + '/v1/api/contatos/' + id);
