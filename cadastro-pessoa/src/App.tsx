@@ -12,7 +12,7 @@ import { SearchBar } from "./components/SearchBar";
 
 function App() {
   const [currentPage, setCurrentPage] = useState(0);
-  const [itemPerPage, setItemPerPage] = useState(8);
+  const [itemPerPage] = useState(8);
 
   const { data } = usePessoaData(currentPage, itemPerPage);
 

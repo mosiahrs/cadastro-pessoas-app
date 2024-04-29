@@ -10,7 +10,7 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import { PessoaData } from "../model/PessoaData";
-import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
+import { DeleteIcon } from "@chakra-ui/icons";
 import { DrawerContatos } from "./Drawer";
 import { CardsContato } from "./CardContato";
 import { UpdateModal } from "./ModalUpdate";

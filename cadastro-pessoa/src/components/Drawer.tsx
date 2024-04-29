@@ -12,8 +12,6 @@ import {
   Tooltip,
   IconButton,
   Flex,
-  Text,
-  Center,
 } from "@chakra-ui/react";
 
 type Props = {
