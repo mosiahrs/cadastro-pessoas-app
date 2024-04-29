@@ -1,7 +1,11 @@
-VOLUME /tmp
+FROM maven:latest AS build
 COPY . .
-RUN mvn clean install -DskipTests
+RUN mvn clean install 
 
-FROM eclipse-temurin:21.0.1_12-jdk
+FROM openjdk:17-jdk-slim
+COPY --from=build /target/cadastro-pessoas-0.0.1-SNAPSHOT.jar app.jar
+
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","-Xmx512M", "cadastro-pessoas-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","-Xmx512M","app.jar"]
+
+
