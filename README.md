@@ -58,6 +58,7 @@ chmod +x start.sh
 ## Ambiente de Produção
 
 Os projetos foram publicados no [Render](https://render.com) e o sistema pode ser acessado [nesse link](https://cadastro-pessoas-app.onrender.com/).
+**PS: A maquina de prod é FREE Tier (0.1 CPU / 512 RAM), então pode ser que a comunicação com o backend demore um pouco.
 
 ## Preview
 <h1 align="center">
